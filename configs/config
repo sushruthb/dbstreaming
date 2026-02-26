@@ -1,0 +1,11 @@
+class AppConfig:
+    def __init__(self, env):
+        self.config = load_config(env)
+
+    @property
+    def bronze_table(self):
+        return f"{self.config['catalog']}.bronze.orders_raw"
+
+    @property
+    def kafka_bootstrap(self):
+        return self.config["kafka"]["bootstrap_servers"]
